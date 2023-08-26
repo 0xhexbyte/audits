@@ -8,7 +8,7 @@ This repository represents my portfolio of smart contract security audits and au
 ### July 2023
 
 1. [Beedle Gas Optimisation](https://github.com/Cyfrin/2023-07-beedle/issues/45)
-2. [DeFi Gas Optimisation](https://github.com/Cyfrin/2023-07-foundry-defi-stablecoin/issues/200)
+2. [DeFi Stablecoin Gas Optimisation](https://github.com/Cyfrin/2023-07-foundry-defi-stablecoin/issues/200)
 
 
 ## Stats
