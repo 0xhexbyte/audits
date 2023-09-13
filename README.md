@@ -3,7 +3,8 @@
 This repository represents my portfolio of smart contract security audits and audit contest findings.
 
 ### August 2023
-1. Sparkn Audit (to be published)
+1. [Sparkn Audit](https://github.com/Cyfrin/2023-08-sparkn/)
+    ↳ [Report](reports/sparkn.md)
 
 ### July 2023
 
