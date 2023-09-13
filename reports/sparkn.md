@@ -4,16 +4,12 @@
 - ## [Contest Summary](#contest-summary)
 - ## [Results Summary](#results-summary)
 
-- ## Medium Risk Findings
-    - ### [M-01. Lack of chainID validation allows signatures to be re-used across forks](#M-01)
 - ## Low Risk Findings
-    - ### [L-01. Events are not `indexed`](#L-01)
-    - ### [L-02. Spelling error in the comments](#L-02)
-    - ### [L-03. Use 2 step Ownable by OpenZeppelin](#L-03)
-    - ### [L-04. Immutable `STADIUM_ADDRESS` Puts Funds at Risk](#L-04)
-    - ### [L-05. Precision loss/Rounding to Zero in `_distribute()`](#L-05)
-    - ### [L-06. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array](#L-06)
-    - ### [L-07. Funds can get stuck in contract if a winner is on the USDT blocklist](#L-07)
+    - ### [L-01. Use 2 step Ownable by OpenZeppelin](#L-01)
+    - ### [L-02. Immutable `STADIUM_ADDRESS` Puts Funds at Risk](#L-02)
+    - ### [L-03. Precision loss/Rounding to Zero in `_distribute()`](#L-03)
+    - ### [L-04. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array](#L-04)
+    - ### [L-05. Funds can get stuck in contract if a winner is on the USDT blocklist](#L-05)
 
 
 # <a id='contest-summary'></a>Contest Summary
@@ -28,88 +24,15 @@
 
 ### Number of findings:
    - High: 0
-   - Medium: 1
-   - Low: 7
+   - Medium: 0
+   - Low: 5
 
 
 
-		
-# Medium Risk Findings
-
-## <a id='M-01'></a>M-01. Lack of chainID validation allows signatures to be re-used across forks            
-
-### Relevant GitHub Links
-	
-https://github.com/Cyfrin/2023-08-sparkn/blob/0f139b2dc53905700dd29a01451b330f829653e9/src/ProxyFactory.sol#L152
-
-## Summary
-
-If the chain forks after deployment, the signature passed when calling `deployProxyAndDistributeBySignature()` may be considered valid on both forks.
-
-
-## Vulnerability Details
-The signatures used to deployProxy and distribute rewards do not account for chain splits. The chainID is not included in the domain separator. As a result, if the chain forks after deployment, the signed message may be considered valid on both forks.
-
-Imagine Bob as one of the winners. An EIP is included in an upcoming hard fork that has split the community. After the hard fork, a significant user base remains on the old chain. On the new chain, The organizer calls `deployProxyAndDistributeBySignature`. Bob(the malicious user), operating on both chains, replays the signature on the old chain and is able to deploy the proxy and steal funds
-
-## Impact
-The protocol becomes vulnerable to Signature Replay attacks where in malicious users replay the signatures to steal funds from the organizers.
-
-## Tools Used
-
-Manual Review
-
-## Remediation Steps
-Include the chainID in the signature schema. This will make replay attacks impossible in the event of a post-deployment hard fork
 
 # Low Risk Findings
 
-## <a id='L-01'></a>L-01. Events are not `indexed`            
-
-### Relevant GitHub Links
-	
-https://github.com/Cyfrin/2023-08-sparkn/blob/0f139b2dc53905700dd29a01451b330f829653e9/src/Distributor.sol#L64
-
-## Summary
-
-The emitted events are not `indexed`, making off-chain scripts such as front-ends of dApps to filter the events efficiently.
-
-## Vulnerability Details
-
-Indexed event fields make the field more quickly accessible to off-chain
-tools that parse events like The Graph. However, note that each index field costs extra gas during emission, so it’s not necessarily best to index the maximum
-allowed per event (three fields)
-
-
-## Tools Used
-
-Manual Review
-
-## Remediation Steps
-
-Add the indexed keyword in each event, e.g., event Distributed(address token, address[] winners, uint256[] percentages, bytes data);.
-## <a id='L-02'></a>L-02. Spelling error in the comments            
-
-### Relevant GitHub Links
-	
-https://github.com/Cyfrin/2023-08-sparkn/blob/0f139b2dc53905700dd29a01451b330f829653e9/src/Distributor.sol#L114
-
-## Summary
-
-Misspelled words in comments.
-
-`* @param data The data to be logged. It is supposed to be used for 
-showing the realation bbetween winners and proposals.`
-
-## Vulnerability Details
-
-The parameter description for the variable data contains a typo, where 
-"realation bbetween" should be corrected to "relation between". 
-
-## Tools Used
-
-Manual Review
-## <a id='L-03'></a>L-03. Use 2 step Ownable by OpenZeppelin            
+## <a id='L-01'></a>L-01. Use 2 step Ownable by OpenZeppelin            
 
 ### Relevant GitHub Links
 	
@@ -138,7 +61,7 @@ Manual Review
 ## Remediation Steps
 
 Implement 2-Step-Process for transferring ownership via Ownable2Step contract from OpenZeppelin (https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol)
-## <a id='L-04'></a>L-04. Immutable `STADIUM_ADDRESS` Puts Funds at Risk            
+## <a id='L-02'></a>L-02. Immutable `STADIUM_ADDRESS` Puts Funds at Risk            
 
 ### Relevant GitHub Links
 	
@@ -182,7 +105,7 @@ function changeStadiumAddress(address newStadiumAddress) external {
     emit StadiumAddressChanged(newStadiumAddress);
 }
 ```
-## <a id='L-05'></a>L-05. Precision loss/Rounding to Zero in `_distribute()`            
+## <a id='L-03'></a>L-03. Precision loss/Rounding to Zero in `_distribute()`            
 
 ### Relevant GitHub Links
 	
@@ -297,7 +220,7 @@ Consider instituting a `predefined minimum threshold` for the `percentage` amoun
 Additionally, an alternative strategy involves adopting a `rounding up equation` that consistently rounds the `distribution amount upward` to the nearest integer value. 
 
 By incorporating either of these methodologies, the precision vulnerability associated with small values and percentages can be effectively mitigated, resulting in more accurate and reliable token distribution outcomes.
-## <a id='L-06'></a>L-06. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array            
+## <a id='L-04'></a>L-04. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array            
 
 ### Relevant GitHub Links
 	
@@ -349,7 +272,7 @@ Manual Review
 * Implement a Cap on Winners: Introduce an upper limit on the number of winners for any given contest in the `Distributor.sol` contract that can be included in a distribution. This cap should be determined based on the protocol's capacity and resources, aiming to strike a balance between fair distribution and system performance.
 
 
-## <a id='L-07'></a>L-07. Funds can get stuck in contract if a winner is on the USDT blocklist            
+## <a id='L-05'></a>L-05. Funds can get stuck in contract if a winner is on the USDT blocklist            
 
 ### Relevant GitHub Links
 	
