@@ -5,11 +5,10 @@
 - ## [Results Summary](#results-summary)
 
 - ## Low Risk Findings
-    - ### [L-01. Use 2 step Ownable by OpenZeppelin](#L-01)
-    - ### [L-02. Immutable `STADIUM_ADDRESS` Puts Funds at Risk](#L-02)
-    - ### [L-03. Precision loss/Rounding to Zero in `_distribute()`](#L-03)
-    - ### [L-04. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array](#L-04)
-    - ### [L-05. Funds can get stuck in contract if a winner is on the USDT blocklist](#L-05)
+    - ### [L-01. Immutable `STADIUM_ADDRESS` Puts Funds at Risk](#L-01)
+    - ### [L-02. Precision loss/Rounding to Zero in `_distribute()`](#L-02)
+    - ### [L-03. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array](#L-03)
+    - ### [L-04. Funds can get stuck in contract if a winner is on the USDT blocklist](#L-04)
 
 
 # <a id='contest-summary'></a>Contest Summary
@@ -25,43 +24,13 @@
 ### Number of findings:
    - High: 0
    - Medium: 0
-   - Low: 5
+   - Low: 4
 
 
 
 
 # Low Risk Findings
-
-## <a id='L-01'></a>L-01. Use 2 step Ownable by OpenZeppelin            
-
-### Relevant GitHub Links
-	
-https://github.com/Cyfrin/2023-08-sparkn/blob/0f139b2dc53905700dd29a01451b330f829653e9/src/ProxyFactory.sol#L26
-
-## Summary
-The contracts `ProxyFactory.sol` does not implement a 2-Step-Process for transferring ownership which can result in lose of ownership.
-
-## Vulnerability Details
-
-Ownership of the contract can easily be lost when making a mistake when transferring ownership. Since the privileged roles have critical function roles assigned to them. Assigning the ownership to a wrong user can be disastrous.
-
-So Consider using the `Ownable2Step` contract from OZ (https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol) instead. The way it works is there is a `transferOwnership` to transfer the ownership and `acceptOwnership` to accept the ownership.
-
-
-
-
-##Impact
-
-If ownership is lost, The `onlyOwner` functions like `setContest`, `deployProxyAndDistributeByOwner` and `distributeByOwner` will be inaccessible.
-
-## Tools Used
-
-Manual Review
-
-## Remediation Steps
-
-Implement 2-Step-Process for transferring ownership via Ownable2Step contract from OpenZeppelin (https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable2Step.sol)
-## <a id='L-02'></a>L-02. Immutable `STADIUM_ADDRESS` Puts Funds at Risk            
+## <a id='L-01'></a>L-01. Immutable `STADIUM_ADDRESS` Puts Funds at Risk            
 
 ### Relevant GitHub Links
 	
@@ -105,7 +74,7 @@ function changeStadiumAddress(address newStadiumAddress) external {
     emit StadiumAddressChanged(newStadiumAddress);
 }
 ```
-## <a id='L-03'></a>L-03. Precision loss/Rounding to Zero in `_distribute()`            
+## <a id='L-02'></a>L-02. Precision loss/Rounding to Zero in `_distribute()`            
 
 ### Relevant GitHub Links
 	
@@ -220,7 +189,7 @@ Consider instituting a `predefined minimum threshold` for the `percentage` amoun
 Additionally, an alternative strategy involves adopting a `rounding up equation` that consistently rounds the `distribution amount upward` to the nearest integer value. 
 
 By incorporating either of these methodologies, the precision vulnerability associated with small values and percentages can be effectively mitigated, resulting in more accurate and reliable token distribution outcomes.
-## <a id='L-04'></a>L-04. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array            
+## <a id='L-03'></a>L-03. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array            
 
 ### Relevant GitHub Links
 	
@@ -272,7 +241,7 @@ Manual Review
 * Implement a Cap on Winners: Introduce an upper limit on the number of winners for any given contest in the `Distributor.sol` contract that can be included in a distribution. This cap should be determined based on the protocol's capacity and resources, aiming to strike a balance between fair distribution and system performance.
 
 
-## <a id='L-05'></a>L-05. Funds can get stuck in contract if a winner is on the USDT blocklist            
+## <a id='L-04'></a>L-04. Funds can get stuck in contract if a winner is on the USDT blocklist            
 
 ### Relevant GitHub Links
 	
