@@ -4,11 +4,12 @@
 - ## [Contest Summary](#contest-summary)
 - ## [Results Summary](#results-summary)
 
+- ## Medium Risk Findings
+    - ### [M-01. Immutable `STADIUM_ADDRESS` Puts Funds at Risk](#M-01)
 - ## Low Risk Findings
-    - ### [L-01. Immutable `STADIUM_ADDRESS` Puts Funds at Risk](#L-01)
-    - ### [L-02. Precision loss/Rounding to Zero in `_distribute()`](#L-02)
-    - ### [L-03. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array](#L-03)
-    - ### [L-04. Funds can get stuck in contract if a winner is on the USDT blocklist](#L-04)
+    - ### [L-01. Precision loss/Rounding to Zero in `_distribute()`](#L-01)
+    - ### [L-02. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array](#L-02)
+    - ### [L-03. Funds can get stuck in contract if a winner is on the USDT blocklist](#L-03)
 
 
 # <a id='contest-summary'></a>Contest Summary
@@ -23,14 +24,15 @@
 
 ### Number of findings:
    - High: 0
-   - Medium: 0
-   - Low: 4
+   - Medium: 1
+   - Low: 3
 
 
 
+		
+# Medium Risk Findings
 
-# Low Risk Findings
-## <a id='L-01'></a>L-01. Immutable `STADIUM_ADDRESS` Puts Funds at Risk            
+## <a id='M-01'></a>M-01. Immutable `STADIUM_ADDRESS` Puts Funds at Risk            
 
 ### Relevant GitHub Links
 	
@@ -74,7 +76,10 @@ function changeStadiumAddress(address newStadiumAddress) external {
     emit StadiumAddressChanged(newStadiumAddress);
 }
 ```
-## <a id='L-02'></a>L-02. Precision loss/Rounding to Zero in `_distribute()`            
+
+# Low Risk Findings
+
+## <a id='L-01'></a>L-01. Precision loss/Rounding to Zero in `_distribute()`            
 
 ### Relevant GitHub Links
 	
@@ -189,7 +194,7 @@ Consider instituting a `predefined minimum threshold` for the `percentage` amoun
 Additionally, an alternative strategy involves adopting a `rounding up equation` that consistently rounds the `distribution amount upward` to the nearest integer value. 
 
 By incorporating either of these methodologies, the precision vulnerability associated with small values and percentages can be effectively mitigated, resulting in more accurate and reliable token distribution outcomes.
-## <a id='L-03'></a>L-03. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array            
+## <a id='L-02'></a>L-02. `Distributor.sol` will DOS when winners are abnormally high due to no restriction on winners' array            
 
 ### Relevant GitHub Links
 	
@@ -241,7 +246,7 @@ Manual Review
 * Implement a Cap on Winners: Introduce an upper limit on the number of winners for any given contest in the `Distributor.sol` contract that can be included in a distribution. This cap should be determined based on the protocol's capacity and resources, aiming to strike a balance between fair distribution and system performance.
 
 
-## <a id='L-04'></a>L-04. Funds can get stuck in contract if a winner is on the USDT blocklist            
+## <a id='L-03'></a>L-03. Funds can get stuck in contract if a winner is on the USDT blocklist            
 
 ### Relevant GitHub Links
 	
