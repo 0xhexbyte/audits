@@ -1,6 +1,6 @@
-# hexbyte's security audits, reviews, contributions
+# Public Audits
 
-This repository represents my portfolio of smart contract security audits and audit contest findings.
+Welcome to my public repo of audits. This repo contains all the contests I have participated in and shall include my solo audits as well.
 
 ### September 2023
 1. Chainlink v2 (Upcoming)
@@ -17,7 +17,9 @@ This repository represents my portfolio of smart contract security audits and au
 
 ## Stats
 (sample)
-
+- Over 40 Critical/High severity vulnerabilities found
+- More than 50% of audits end up with a Critical/High severity vulnerability reported & fixed
+- Over $30,000,000 of TVL is held by the contracts that have been audited by `hexbyte`
 
 ## Contacts
 I am available for security consulting. Reach out to me on Twitter [@0xhexbyte](https://twitter.com/0xhexbyte)
