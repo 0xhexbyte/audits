@@ -11,6 +11,11 @@ Welcome to my public repo of audits. This repo contains all the contests I have 
 |July|Beedle|My initial contest where I reported gas optimizations.|Solo|[📄](https://github.com/Cyfrin/2023-07-beedle/issues/45)|
 |July|Defi Stablecoin|My initial contest where I reported gas optimizations.|Solo|[📄](https://github.com/Cyfrin/2023-07-foundry-defi-stablecoin/issues/200)|
 
+### Audit Platform Ranks
+|Platform|Rank|
+|---|---|
+|C4|(Awaiting)|
+|CodeHawks|319|
 
 ## Stats
 (sample)
