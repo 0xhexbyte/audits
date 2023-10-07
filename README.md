@@ -15,6 +15,13 @@ Welcome to my public repo of audits. This repo contains all the contests I have 
 1. [Beedle Gas Optimisation](https://github.com/Cyfrin/2023-07-beedle/issues/45)
 2. [DeFi Stablecoin Gas Optimisation](https://github.com/Cyfrin/2023-07-foundry-defi-stablecoin/issues/200)
 
+### 2023
+|Month|Project Name|Description|Method|Report|
+|---|---|---|---|---|---|
+|August|Sparkn Audit|Reported 1 Medium and 4 Low issues.|Team|[📄](reports/sparkn.md)|
+|July|Beedle|My initial contest where I reported gas optimizations.|Solo|[📄](https://github.com/Cyfrin/2023-07-beedle/issues/45)|
+|July|Defi Stablecoin|My initial contest where I reported gas optimizations.|Solo|[📄](https://github.com/Cyfrin/2023-07-foundry-defi-stablecoin/issues/200)|
+
 
 ## Stats
 (sample)
