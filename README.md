@@ -14,8 +14,8 @@ Welcome to my public repo of audits. This repo contains all the contests I have 
 ### Audit Platform Ranks
 |Platform|Rank|
 |---|---|
-|C4|(Awaiting)|
-|CodeHawks|319|
+|C4|[Awaiting](https://code4rena.com/leaderboard)|
+|CodeHawks|[319](https://www.codehawks.com/leaderboard)|
 
 ## Stats
 (sample)
