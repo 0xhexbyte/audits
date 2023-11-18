@@ -5,6 +5,7 @@ Welcome to my public repo of audits. This repo contains all the contests I have 
 ### 2023
 |Month|Project Name|Description|Method|Report|
 |---|---|---|---|---|
+|Oct - Nov|[StakeTogether]()|TBD.|Private/Team|[📄]()|
 |September|[MaiaDAO](https://code4rena.com/contests/2023-08-chainlink-staking-v02)|TBD.|Team|[📄]()|
 |September|[Chainlink Staking v2](https://code4rena.com/contests/2023-09-maia-dao-ulysse)|TBD.|Team|[📄]()|
 |August|[Sparkn Audit](https://github.com/Cyfrin/2023-08-sparkn/)|Reported 1 Medium and 4 Low issues.|Team|[📄](reports/sparkn.md)|
