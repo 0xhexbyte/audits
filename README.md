@@ -1,6 +1,6 @@
 # Audits
 
-Welcome to my public repo of audits. This repo contains all the contests I have participated in and shall include my solo audits as well.
+Welcome to my public repo of audits. This repo contains all the contests and private audits that I have contributed to.
 
 ### 2023
 |Month|Project Name|Description|Method|Report|
