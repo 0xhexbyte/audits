@@ -2,6 +2,11 @@
 
 Welcome to my public repo of audits. This repo contains all the contests and private audits that I have contributed to.
 
+### 2024
+|Month|Project Name|Description|Method|Report|
+|---|---|---|---|---|
+|April|[Curvance](https://cantina.xyz/competitions/ac757733-81a4-43c7-8f49-17c5b135cdff)|Reported 1 Low (High Impact)|Solo|[📄](https://cantina.xyz/code/ac757733-81a4-43c7-8f49-17c5b135cdff/findings/87#comment-c7e82e45-c013-4503-80c2-ecbd623decc1)|
+
 ### 2023
 |Month|Project Name|Description|Method|Report|
 |---|---|---|---|---|
