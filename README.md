@@ -7,7 +7,7 @@ Welcome to my public repo of audits. This repo contains all the contests and pri
 |---|---|---|---|---|
 |Oct - Nov|[StakeTogether]()|TBD.|Private/Team|[📄]()|
 |September|[MaiaDAO](https://code4rena.com/contests/2023-08-chainlink-staking-v02)|TBD.|Team|[📄]()|
-|September|[Chainlink Staking v2](https://code4rena.com/contests/2023-09-maia-dao-ulysse)|TBD.|Team|[📄]()|
+|September|[Chainlink Staking v2](https://code4rena.com/contests/2023-09-maia-dao-ulysse)|Reported 1 Medium|Team|[📄](https://github.com/code-423n4/2023-09-maia-findings/issues/399)|
 |August|[Sparkn Audit](https://github.com/Cyfrin/2023-08-sparkn/)|Reported 1 Medium and 4 Low issues.|Team|[📄](reports/sparkn.md)|
 |July|Beedle|Gas optimization|Solo|[📄](https://github.com/Cyfrin/2023-07-beedle/issues/45)|
 |July|Defi Stablecoin|Gas optimization|Solo|[📄](https://github.com/Cyfrin/2023-07-foundry-defi-stablecoin/issues/200)|
